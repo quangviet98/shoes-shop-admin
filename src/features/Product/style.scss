@@ -1,22 +1,3 @@
-.add-form-enter {
-    opacity: 0;
-    transform: scale(0.7);
-}
-
-.add-form-enter-active {
-    opacity: 1;
-    transform: translateX(0);
-    transition: opacity 500ms, transform 500ms;
-}
-
-.add-form-exit {
-    opacity: 1;
-}
-.add-form-exit-active {
-    opacity: 0;
-    transform: scale(0.7);
-    transition: opacity 500ms, transform 500ms;
-}
 .section-add-product {
     border: 1px solid #dcdcdb;
     border-radius: 4px;

@@ -72,7 +72,7 @@ function Login(props) {
 
     return (
 
-        <div className="app flex-row align-items-center">
+        <div className="app flex-row align-items-center card--mt-100">
             <Container>
                 <Row className="justify-content-center">
                     <Col md="6">

@@ -39,15 +39,20 @@ function AddForm({ reload, alert, mission, customer, closeEdit }) {
 
 
     const initialValues = {
-        name: mission === "edit" && customer.name || "",
-        role: mission === "edit" && customer.role || "admin",
-        email: mission === "edit" && customer.email || "",
-        password: mission === "edit" && customer.password || "",
-        phone: mission === "edit" && customer.phone || "",
-        address: mission === "edit" && customer.address || ""
+        name: customer.name,
+        role: customer.role,
+        email: customer.email,
+        password: customer.password,
+        phone: customer.phone,
+        address: customer.address
     }
     if (mission === "add") {
-
+        initialValues.name = "";
+        initialValues.role = "admin";
+        initialValues.email = "";
+        initialValues.password = "";
+        initialValues.phone = "";
+        initialValues.address = "";
     }
 
     const onSubmit = (data) => {

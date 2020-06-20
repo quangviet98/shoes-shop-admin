@@ -106,7 +106,7 @@ function Order(props) {
                 </div>
             </CSSTransition>
 
-            <Card>
+            <Card className="card--mt-100">
                 <CardHeader>Orders
                    
                 </CardHeader>

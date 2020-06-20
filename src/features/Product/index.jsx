@@ -105,7 +105,6 @@ function Product(props) {
     }
 
     const selectProduct = (pro) => {
-        console.log(pro);
         setProduct(pro);
     }
     //console.log(isEdit || isAdd);
@@ -168,7 +167,7 @@ function Product(props) {
                 </div>
             </CSSTransition>
 
-            <Card>
+            <Card className="card--mt-100">
                 <CardHeader>Product
                     <Button color="primary" className="float-right"
                         onClick={() => { setIsAdd(prev => !prev) }}

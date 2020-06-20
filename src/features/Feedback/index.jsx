@@ -99,7 +99,7 @@ function Feedback() {
                 </div>
             </CSSTransition>
 
-            <Card>
+            <Card className="card--mt-100">
                 <CardHeader>Feedback</CardHeader>
 
                 <CardBody>

@@ -40,7 +40,7 @@ function OrderDetail({ order, closeForm, showAlert, reload }) {
 
             <Card>
                 <CardHeader><b>{order.status ? "Đơn hàng đã xử lý" : "Đơn hàng chưa xử lý"}</b>
-                    <button className="btn-close-edit btn-close-edit--order"
+                    <button className="btn-close-edit--order"
                         onClick={() => closeForm()}
                     >
                         <FontAwesomeIcon icon={faBackspace} />

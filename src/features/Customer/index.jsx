@@ -134,7 +134,7 @@ function Customer() {
                 </div>
             </CSSTransition>
 
-            <Card>
+            <Card className="card--mt-100">
                 <CardHeader>Customers
                     <Button color="primary" className="float-right"
                         onClick={() => {

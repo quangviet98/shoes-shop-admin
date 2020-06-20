@@ -2,7 +2,6 @@ import React from 'react'
 import { Form, Input, Label, FormGroup, Button, Row, Col } from "reactstrap";
 import { PREFIX_URL_IMG } from "../../../constants/global";
 function ProductDetail({ listTypes, product, closeForm }) {
-    console.log(product.photos);
 
     return (
 
