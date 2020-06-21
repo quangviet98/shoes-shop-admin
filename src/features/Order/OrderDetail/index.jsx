@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import { Card, CardHeader, CardBody, CardTitle, CardText, Button } from "reactstrap";
+import { Card, CardHeader, CardBody, CardTitle, CardText, Button, Table } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBackspace } from "@fortawesome/free-solid-svg-icons";
 import { tokenContext } from "../../../components/Admin";
 import axios from 'axios';
 import { PREFIX_URL_API } from "../../../constants/global";
+import NumberFormat from "react-number-format";
 
 function OrderDetail({ order, closeForm, showAlert, reload }) {
     const date = new Date(order.dateOrder);
@@ -32,6 +33,7 @@ function OrderDetail({ order, closeForm, showAlert, reload }) {
         })
 
     }
+    console.log(order);
     return (
 
         <div className="col-12 add-form bg-white" >
@@ -50,20 +52,60 @@ function OrderDetail({ order, closeForm, showAlert, reload }) {
                     <CardText><b>- Email:</b> {order.customerID.email}</CardText>
                     <CardText><b>- Phone:</b> {order.customerID.phone}</CardText>
                     <CardText><b>- Danh sách sản phẩm:</b></CardText>
-                    <ul>
+                    <Table bordered striped>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Color</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {
+                                order.products.map(pro => (
+                                    <tr key={pro._id}>
+                                        <td>{pro.productID.name}</td>
+                                        <td>{pro.productID.color}</td>
+                                        <td>{
+                                            <NumberFormat value={pro.price}
+                                                displayType={'text'}
+                                                thousandSeparator={true}
+                                                renderText={value => value}
+                                            ></NumberFormat>
+
+                                        }</td>
+                                        <td>{pro.quantity}</td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </Table>
+
+                    {/* <ul>
 
                         {order.products.map(pro => (
                             <li key={pro._id}>
                                 <p>{pro.productID.name}</p>
                                 <p>Color: {pro.productID.color}</p>
+                                <p>Đơn giá: {pro.price}</p>
                                 <p>Số lượng: {pro.quantity}</p>
                             </li>
                         ))}
-                    </ul>
-                    <CardText><b>- Tổng tiền:</b> {order.total}</CardText>
+                    </ul> */}
+                    <CardText><b>- Tổng tiền:  </b>
+                        <NumberFormat value={order.total}
+                            displayType={'text'}
+                            thousandSeparator={true}
+                            suffix={'đ'}
+                            renderText={value => value}
+                        />
+                    </CardText>
                     <CardText><b>- Ngày đặt hàng:</b> {dateString}</CardText>
                     <CardText><b>- Note:</b> {order.note}</CardText>
-                    <Button disabled={order.status} onClick={handleEdit}>Chốt đơn hàng</Button>
+                    <Button color={order.status ? "secondary" : "primary"} disabled={order.status} onClick={handleEdit}>Chốt đơn hàng</Button>
                 </CardBody>
             </Card>
 

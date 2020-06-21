@@ -3,6 +3,7 @@ import { Button, ButtonGroup } from "reactstrap";
 import axios from 'axios';
 import { PREFIX_URL_API } from "../../constants/global";
 import { tokenContext } from "../../components/Admin";
+import NumberFormat from "react-number-format";
 
 function DataRow(props) {
     const { product, reload, selected, showInfo, showEdit, showAlert } = props;
@@ -43,7 +44,13 @@ function DataRow(props) {
             <td>{product.name}</td>
             <td>{product.typeID.name}</td>
             <td>{product.color}</td>
-            <td>{product.price}</td>
+            <td>
+                <NumberFormat value={product.price}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    renderText={value => value}
+                />
+            </td>
             <td>{product.status ? "Còn hàng" : "Ngưng bán"}</td>
             <td className="text-center btn-delete">
                 <ButtonGroup>

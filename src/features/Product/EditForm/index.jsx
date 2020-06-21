@@ -8,7 +8,6 @@ import axios from "axios";
 import { PREFIX_URL_API } from "../../../constants/global";
 import { tokenContext } from "../../../components/Admin";
 
-
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Required!'),
     color: Yup.string().required('Required!'),
@@ -56,7 +55,7 @@ function EditForm({ listTypes, closeForm, product, reload, showAlert }) {
                 Authorization: "JWT " + getToken.token
             }
         }).then(response => {
-            console.log(response);
+            // console.log(response);
             showAlert("success", "Cập nhật sản phẩm thành công!");
             reload();
             closeForm();
@@ -127,6 +126,7 @@ function EditForm({ listTypes, closeForm, product, reload, showAlert }) {
                     <Col >
                         <FormGroup>
                             <Label for="price">Giá</Label>
+
                             <Input type="text" name="price" id="price" placeholder="Price..."
                                 invalid={formik.errors.price && formik.touched.price && true}
                                 {...formik.getFieldProps("price")} />

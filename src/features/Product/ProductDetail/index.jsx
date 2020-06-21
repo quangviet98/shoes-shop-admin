@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form, Input, Label, FormGroup, Button, Row, Col } from "reactstrap";
 import { PREFIX_URL_IMG } from "../../../constants/global";
+import NumberFormat from "react-number-format";
+
 function ProductDetail({ listTypes, product, closeForm }) {
 
     return (
@@ -40,9 +42,16 @@ function ProductDetail({ listTypes, product, closeForm }) {
                     <Col className="col-6">
                         <FormGroup>
                             <Label for="price">Giá</Label>
-                            <Input type="text" name="price" id="price" placeholder="Price..."
-                                defaultValue={product.price}
+                            <NumberFormat value={product.price}
+                                displayType={'text'}
+                                thousandSeparator={true}
+                                renderText={value => (
+                                    <Input type="text" name="price" id="price" placeholder="Price..."
+                                        defaultValue={value}
+                                    />
+                                )}
                             />
+
                         </FormGroup>
                     </Col>
 
